@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# Usage:
+# https://github.com/rasbt/markdown-toclify
+#
 #
 # Sebastian Raschka 2014-2015
 #
@@ -27,7 +30,7 @@ import re
 
 __version__ = '1.7.0'
 
-VALIDS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-&'
+# VALIDS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-&'
 
 def read_lines(in_file):
     """Returns a list of lines from a input markdown file."""
@@ -71,9 +74,9 @@ def dashify_headline(line):
     # character replacements
     replaced_colon = stripped_wspace.replace('.', '')
     replaced_slash = replaced_colon.replace('/', '')
-    rem_nonvalids = ''.join([c if c in VALIDS else '-' for c in replaced_slash])
+    # rem_nonvalids = ''.join([c if c in VALIDS else '-' for c in replaced_slash])
 
-    lowered = rem_nonvalids.lower()
+    lowered = replaced_slash.lower()
     dashified = re.sub(r'(-)\1+', r'\1', lowered) # remove duplicate dashes
     dashified = dashified.strip('-') # strip dashes from start and end
 
